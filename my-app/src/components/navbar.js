@@ -16,7 +16,7 @@ function Navbar() {
       <AppBar style={{backgroundColor: color}} position="static">
         <Toolbar >
           <Typography  variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Application
+            Application TODO
           </Typography>
         </Toolbar>
       </AppBar>
