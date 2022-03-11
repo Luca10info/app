@@ -16,7 +16,7 @@ function Navbar() {
       <AppBar style={{backgroundColor: color}} position="static">
         <Toolbar >
           <Typography  variant="h5" component="div" sx={{ flexGrow: 1 }}>
-            Notes
+            NoteShare
           </Typography>
         </Toolbar>
       </AppBar>
