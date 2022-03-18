@@ -7,9 +7,10 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import {red} from '@mui/material/colors'
+
 function Navbar() {
 
-    const color=red[500];
+  const color=red[500];
 
   return (
     <Box  sx={{ flexGrow: 1 }}>
