@@ -3,10 +3,24 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import HomePage from "./pages/HomePage.js";
+import Appunti from "./pages/Appunti.js";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+
+    <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={<App/>}>
+              <Route path="homepage" element={<HomePage/>}>
+                <Route path="appunti" element={<Appunti/>}/>
+              </Route>
+          </Route>
+        </Routes>
+    </BrowserRouter>
+
   </React.StrictMode>,
   document.getElementById('root')
 );

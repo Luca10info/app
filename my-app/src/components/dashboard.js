@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import {Button, Container,Paper,Typography, Grid, Menu, MenuItem, makeStyles} from "@mui/material"
 import logo from "../img/logo_app.png"
 import {red} from '@mui/material/colors'
@@ -7,7 +7,7 @@ import { useTheme } from "@emotion/react"
 
 function Dashboard(){
 
-    const color=red[500];
+    const [color, setColor]= useState(red[500]);
     return(
         <>
          <Container sx={{mt:"5rem"}}>
