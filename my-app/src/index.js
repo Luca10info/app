@@ -10,17 +10,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 ReactDOM.render(
   <React.StrictMode>
-
-    <BrowserRouter>
-        <Routes>
-          <Route exact path="/" element={<App/>}>
-              <Route path="homepage" element={<HomePage/>}>
-                <Route path="appunti" element={<Appunti/>}/>
-              </Route>
-          </Route>
-        </Routes>
-    </BrowserRouter>
-
+    <App/>
   </React.StrictMode>,
   document.getElementById('root')
 );

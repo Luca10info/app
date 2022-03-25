@@ -1,8 +1,8 @@
 import { Container, CssBaseline, Switch, Typography } from "@mui/material";
-import Navbar from "./components/navbar.js"
 import logo from "./img/noteLogo.png"
-import Dashboard from "./components/dashboard.js";
+import Dashboard from "./components/Dashboard.js";
 import { BrowserRouter, Route, Routes, Link, Outlet } from "react-router-dom";
+import Layout from "./components/layout.js";
 
 
 
@@ -10,16 +10,11 @@ function App() {
   return (
     <>
       <CssBaseline/>
-      <Navbar/>
-      <Container>
-        <div>
-          <Link to="/homepage">Homepage</Link>
-        </div>
-        <div> 
-          <Link to="/about-us">About us</Link>
-        </div>
-        <Outlet/>
-      </Container>
+
+      <Layout>
+        <Dashboard/>
+      </Layout>
+
     </>
     
   );
