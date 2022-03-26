@@ -23,6 +23,7 @@ function Dashboard(){
                         textAlign: 'center'
                         }}>
                         <img src={logo1} height="200px"/>
+                        <span>NoteShare</span>
                     </Paper>
                 </Grid>
 
