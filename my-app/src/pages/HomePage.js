@@ -1,6 +1,6 @@
 import React from "react"
 import { Container, Typography } from "@mui/material"
-import Dashboard from "../components/Dashboard"
+import Dashboard from "../components/dashboard"
 import {Link, Outlet} from "react-router-dom"
 function HomePage(){
 

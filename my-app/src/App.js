@@ -1,7 +1,7 @@
 import { Container, CssBaseline, Switch, Typography } from "@mui/material";
 import logo from "./img/noteLogo.png"
-import Dashboard from "./components/Dashboard.js";
-import Layout from "./components/Layout.js";
+import Dashboard from "./components/dashboard.js";
+import Layout from "./components/layout.js";
 
 
 
@@ -12,7 +12,6 @@ function App() {
       <Layout>
         <Dashboard/>
       </Layout>
-
     </>
     
   );

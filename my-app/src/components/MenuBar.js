@@ -1,7 +1,12 @@
-import { Drawer, Hidden, makeStyles } from "@mui/material";
+import { Drawer, Hidden, Icon, List, ListItemIcon, ListItemText, ListItem, Divider, Avatar, Typography, ListItemAvatar } from "@mui/material";
+import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
+import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+import { makeStyles } from "@mui/styles";
 
 
-const useStyle = makeStyles({
+const drawerWidth = 240;
+
+const useStyle = makeStyles(theme=>({
     drawer: {
         width: drawerWidth,
         backgroundColor: "#f44336",
@@ -10,14 +15,17 @@ const useStyle = makeStyles({
     drawerPaper: {
         width: drawerWidth,
         backgroundColor: "#f44336!important",
+        paddingTop:"14px"
+    },
+    drawerList:{
         display:"flex",
         justifyContent:"center",
         flexDirection:"column"
     }
-})
+}))
 
 
-export default function MenuBar(isMobile){
+export default function MenuBar({isMobile}){
 
     const classes = useStyle();
     const menuItems = [
@@ -36,11 +44,44 @@ export default function MenuBar(isMobile){
 
         <div>
             <nav>
-                <Hidden xsDown implementation="css">
+                <Hidden smDown implementation='css'>
                     <Drawer
                         className={classes.drawer}
                         variant="permanent"
+                        open
                         anchor="left"
+                        classes={{paper: classes.drawerPaper}}
+                    >
+                        <ListItem>
+                            <ListItemAvatar>
+                                <Avatar/>
+                            </ListItemAvatar>
+                            <ListItemText>
+                                <Typography variant="body1" align="left" >Profilo</Typography>
+                            </ListItemText>
+                           
+                        </ListItem>
+
+                        <Divider/>
+
+                        <List className={classes.drawerList}>
+                            {menuItems.map((item)=>(
+                                <ListItem
+                                    button
+                                    key={item.text}>
+                                <ListItemIcon >{item.logo}</ListItemIcon>
+                                <ListItemText primary={item.text}/>
+                            </ListItem>
+                            ))}
+                        </List>
+                    
+                    </Drawer>
+                </Hidden>
+                <Drawer
+                        className={classes.drawer}
+                        variant="temporary"
+                        open={isMobile}
+                        anchor="top"
                         classes={{paper: classes.drawerPaper}}
                     >
                         <List className={classes.drawerList}>
@@ -55,7 +96,6 @@ export default function MenuBar(isMobile){
                         </List>
                     
                     </Drawer>
-                </Hidden>
             </nav>
         </div>
 

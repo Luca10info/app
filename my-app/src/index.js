@@ -3,8 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import HomePage from "./pages/HomePage.js";
-import Appunti from "./pages/Appunti.js";
+import HomePage from "./pages/homePage.js";
+import Appunti from "./pages/appunti.js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 
