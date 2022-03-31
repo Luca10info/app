@@ -6,7 +6,7 @@ import { makeStyles } from "@mui/styles";
 
 const drawerWidth = 240;
 
-const useStyle = makeStyles(theme=>({
+const useStyle = makeStyles(theme => ({
     drawer: {
         width: drawerWidth,
         backgroundColor: "#f44336",
@@ -15,36 +15,37 @@ const useStyle = makeStyles(theme=>({
     drawerPaper: {
         width: drawerWidth,
         backgroundColor: "#f44336!important",
-        paddingTop:"14px"
+        paddingTop: "14px"
     },
-    drawerList:{
-        display:"flex",
-        justifyContent:"center",
-        flexDirection:"column"
+    drawerList: {
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column"
     }
 }))
 
 
-export default function MenuBar({isMobile}){
+export default function MenuBar({ isOpen }) {
 
     const classes = useStyle();
     const menuItems = [
         {
             text: "Appunti",
-            logo: <DriveFileRenameOutlineTwoToneIcon/>,
+            logo: <DriveFileRenameOutlineTwoToneIcon />,
             path: "/appunti"
         },
         {
             text: "Ricerca",
-            logo: <SearchTwoToneIcon/>,
-            path:"/create"
+            logo: <SearchTwoToneIcon />,
+            path: "/create"
         }
     ]
-    return(
+    return (
 
         <div>
             <nav>
-                <Hidden smDown implementation='css'>
+                {/*
+                    <Hidden smDown implementation='css'>
                     <Drawer
                         className={classes.drawer}
                         variant="permanent"
@@ -76,26 +77,28 @@ export default function MenuBar({isMobile}){
                         </List>
                     
                     </Drawer>
-                </Hidden>
+                </Hidden>*/
+                }
+
                 <Drawer
-                        className={classes.drawer}
-                        variant="temporary"
-                        open={isMobile}
-                        anchor="top"
-                        classes={{paper: classes.drawerPaper}}
-                    >
-                        <List className={classes.drawerList}>
-                            {menuItems.map((item)=>(
-                                <ListItem
-                                    button
-                                    key={item.text}>
+                    className={classes.drawer}
+                    variant="temporary"
+                    open={isOpen}
+                    anchor="left"
+                    classes={{ paper: classes.drawerPaper }}
+                >
+                    <List className={classes.drawerList}>
+                        {menuItems.map((item) => (
+                            <ListItem
+                                button
+                                key={item.text}>
                                 <ListItemIcon >{item.logo}</ListItemIcon>
-                                <ListItemText primary={item.text}/>
+                                <ListItemText primary={item.text} />
                             </ListItem>
-                            ))}
-                        </List>
-                    
-                    </Drawer>
+                        ))}
+                    </List>
+
+                </Drawer>
             </nav>
         </div>
 

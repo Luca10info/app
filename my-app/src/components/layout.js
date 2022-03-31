@@ -6,38 +6,38 @@ import LogoReverso from "../img/logo_app_reverso.png"
 import Logo from "../img/logo_app.png"
 
 
-import NavBar from "./navBar";
-import MenuBar from "./menuBar";
+import NavBar from "./NavBar";
+import MenuBar from "./MenuBar";
 import { ThemeContext } from "@emotion/react";
 
 
-const useStyle = makeStyles( theme =>({
+const useStyle = makeStyles(theme => ({
 
-    root:{
-        display:"flex"
+    root: {
+        display: "flex"
     },
-    img:{
+    img: {
         margin: "10px",
         width: "50px"
     },
-    page:{
-        backgroundColor:"#f9f9f9",
+    page: {
+        backgroundColor: "#f9f9f9",
         width: "100%"
     }
 }));
 
-export default function Layout({children}){
+export default function Layout({ children }) {
 
     const classes = useStyle();
-    const [isMobile, setIsMobile] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
-    const funcSetIsMobile = () => {
-        setIsMobile(!isMobile);
+    const funcSetIsOpen = () => {
+        setIsOpen(!isOpen);
     }
     return (
         <div className={classes.root}>
-            <MenuBar isMobile={isMobile}/>
-            <NavBar/>
+            <MenuBar isOpen={isOpen} />
+            <NavBar funcSetIsOpen={funcSetIsOpen}/>
             <div className={classes.page}>
                 {children}
             </div>
