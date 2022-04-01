@@ -10,25 +10,33 @@ import { useTheme } from "@emotion/react";
 
 const useStyle = makeStyles( (theme)=>({
     img: {
-        margin: "10px",
-        width: "50px"
+        width: "50px",
+        [theme.breakpoints.down('sm')]:{
+            display:"none"
+        }
+    },
+    appBar:{
+        zIndex: theme.zIndex.drawer +1 +"!important",
     },
     navBar: {
         backgroundColor: "#f44336!important",
         display: "flex",
         alignItems: "center",
-        justifyContent:"center"
+        justifyContent:"left"
     },
     navBarIcon: {
         display: "flex",
         color: "white!important",
-      /*  [theme.breakpoints.up('sm')]:{
+        [theme.breakpoints.up('sm')]:{
             width:"40%"
-        }*/
+        }
         
     },
     navBarContent: {
-        color: "white!important"
+        color: "white!important",
+        [theme.breakpoints.up('sm')]:{
+            display:"none !important"
+        }
     }
 
 }));
@@ -38,7 +46,7 @@ export default function NavBar({ funcSetIsOpen }) {
     const classes = useStyle();
 
     return (
-        <AppBar>
+        <AppBar posittion="fixed" className={classes.appBar} >
             <Toolbar className={classes.navBar} >
                 <div className={classes.navBarIcon}>
                     <IconButton className={classes.navBarContent}

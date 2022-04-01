@@ -36,8 +36,8 @@ export default function Layout({ children }) {
     }
     return (
         <div className={classes.root}>
-            <MenuBar isOpen={isOpen} />
             <NavBar funcSetIsOpen={funcSetIsOpen}/>
+            <MenuBar isOpen={isOpen} funcSetIsOpen={funcSetIsOpen} />
             <div className={classes.page}>
                 {children}
             </div>
