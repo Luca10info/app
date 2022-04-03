@@ -26,7 +26,7 @@ const useStyle = makeStyles(theme => ({
     }
 }));
 
-export default function Layout({ children }) {
+export default function Layout({ children, menuItems }) {
 
     const classes = useStyle();
     const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +37,7 @@ export default function Layout({ children }) {
     return (
         <div className={classes.root}>
             <NavBar funcSetIsOpen={funcSetIsOpen}/>
-            <MenuBar isOpen={isOpen} funcSetIsOpen={funcSetIsOpen} />
+            <MenuBar isOpen={isOpen} menuItems={menuItems} funcSetIsOpen={funcSetIsOpen} />
             <div className={classes.page}>
                 {children}
             </div>

@@ -1,12 +1,10 @@
 import { Drawer, Hidden, Icon, List, ListItemIcon, ListItemText, ListItem, Divider, Avatar, Typography, ListItemAvatar, Toolbar } from "@mui/material";
-import DriveFileRenameOutlineTwoToneIcon from '@mui/icons-material/DriveFileRenameOutlineTwoTone';
-import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
+
 import { makeStyles } from "@mui/styles";
 import { width } from "@mui/system";
 import Profile from "./Profile";
 import { useState } from "react";
-import { spacing } from '@mui/system';
-
+import {Link} from 'react-router-dom';
 const drawerWidth = 240;
 
 const useStyle = makeStyles(theme => ({
@@ -26,44 +24,35 @@ const useStyle = makeStyles(theme => ({
 }))
 
 
-export default function MenuBar({ isOpen, funcSetIsOpen }) {
+export default function MenuBar({ isOpen, funcSetIsOpen, menuItems }) {
 
     const [profile, setProfile] = useState(false);
     const classes = useStyle();
-    const menuItems = [
-        {
-            text: "Appunti",
-            logo: <DriveFileRenameOutlineTwoToneIcon />,
-            path: "/appunti"
-        },
-        {
-            text: "Ricerca",
-            logo: <SearchTwoToneIcon />,
-            path: "/create"
-        }
-    ]
+
 
     const drawer = (
         <div>
-            <div sx={{ p: "12px"}}>
-                <Toolbar />
+            <Toolbar />
+            <div style={{ padding: "12px" }}>
                 <Profile
-                    name="luca"
+                    name="Luca"
                 />
-
-                <Divider />
-
-                <List className={classes.drawerList}>
-                    {menuItems.map((item) => (
-                        <ListItem
-                            button
-                            key={item.text}>
-                            <ListItemIcon >{item.logo}</ListItemIcon>
-                            <ListItemText primary={item.text} />
-                        </ListItem>
-                    ))}
-                </List>
             </div>
+            <Divider />
+
+            <List className={classes.drawerList}>
+                {menuItems.map((item) => (
+                    <ListItem
+                        button
+                        component={Link}
+                        key={item.text}
+                        to={item.path}
+                    >
+                        <ListItemIcon >{item.logo}</ListItemIcon>
+                        <ListItemText primary={item.text} />
+                    </ListItem>
+                ))}
+            </List>
         </div>
     );
 
