@@ -21,8 +21,12 @@ const useStyle = makeStyles(theme => ({
         width: "50px"
     },
     page: {
-        backgroundColor: "#f9f9f9",
-        width: "100%"
+        flexGrow: 1,
+        padding: theme.spacing(3),
+        marginTop: '54px',
+        [theme.breakpoints.down('xs')]: {
+            marginTop: '40px'
+        },
     }
 }));
 

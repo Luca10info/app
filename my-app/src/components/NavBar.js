@@ -17,9 +17,6 @@ const useStyle = makeStyles((theme) => ({
             display: "none"
         }
     },
-    navBar: {
-
-    },
     navBarIcon: {
         display: "flex",
         color: theme.palette.secondary.main,
@@ -31,7 +28,7 @@ const useStyle = makeStyles((theme) => ({
     navBarContent: {
         color: theme.palette.primary.main,
         [theme.breakpoints.up('sm')]: {
-            display: "none !important"
+            display: "none !important",
         }
     }
 
@@ -42,20 +39,20 @@ export default function NavBar({ funcSetIsOpen }) {
     const classes = useStyle();
 
     return (
-        <AppBar posittion="fixed" sx={{ zIndex: zIndex.drawer + 1 }}>
+        <AppBar posittion="relative" sx={{ zIndex: zIndex.drawer + 1 }}>
             <Toolbar sx={{
                 backgroundColor: 'primary.main',
+                color:'secondary.main',
                 display: "flex",
-                alignItems: "center",
-                justifyContent: "center"
+                flexDirection:"row"
             }} >
                 <div sx={{
                     backgroundColor: "primary.main",
                 }}>
                     <IconButton className={classes.navBarContent}
-                        onClick={funcSetIsOpen}
+                        onClick={funcSetIsOpen} 
                     >
-                        <MenuIcon />
+                        <MenuIcon sx={{color:"white"}} />
                     </IconButton>
                 </div>
 
