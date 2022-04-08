@@ -16,3 +16,10 @@
 $router->get('/', function () use ($router) {
     return $router->app->version();
 });
+
+$router->group(['prefix'=>'nsapi'],function() use ($router){
+    $router->get('/notes','NoteController@index');
+    $router->post('/notes', 'NoteController@store');
+    $router->put('/notes/{id}','NoteController@update');
+    $router->delete('/notes/{id}','NoteController@delete');
+});
