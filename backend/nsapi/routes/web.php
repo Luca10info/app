@@ -17,6 +17,9 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('/login', 'AuthController@login');
+
+
 $router->group(['prefix'=>'nsapi'],function() use ($router){
     $router->get('/notes','NoteController@index');
     $router->post('/notes', 'NoteController@store');
