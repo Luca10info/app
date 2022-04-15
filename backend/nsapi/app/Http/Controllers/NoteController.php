@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Note;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Test\Constraint\ResponseIsRedirected;
 
 class NoteController extends Controller
 {
@@ -58,5 +59,20 @@ class NoteController extends Controller
         } catch (\Throwable $th) {
            return response()->json(['status'=>'error', 'message'=>$th->getMessage()]);
         }
+    }
+
+    public function getNote(Request $request, $id){
+
+        try {
+            
+            if(!$note = Note::findOrFail($id)){
+                return response()->json(['error'=>'404', 'messagge' => 'Note not found']);
+            }
+            return $note;
+
+        } catch (\Throwable $th) {
+            return response()->json(['error'=>'404', 'messagge' => $th->getMessage()]);
+        }
+
     }
 }

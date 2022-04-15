@@ -18,11 +18,16 @@ $router->get('/', function () use ($router) {
 });
 
 $router->post('/login', 'AuthController@login');
+$router->post('/register', 'AuthController@register');
 
-
-$router->group(['prefix'=>'nsapi'],function() use ($router){
-    $router->get('/notes','NoteController@index');
-    $router->post('/notes', 'NoteController@store');
-    $router->put('/notes/{id}','NoteController@update');
-    $router->delete('/notes/{id}','NoteController@delete');
+$router->group(['middleware'=>'jwt.auth'], function () use($router){
+    $router->group(['prefix'=>'nsapi'],function() use ($router){
+        $router->post('/logout','AuthController@logout');
+        $router->get('/notes','NoteController@index');
+        $router->get('/notes/{id}','NoteController@getNote');
+        $router->get('/profile','UserController@show');
+        $router->post('/notes', 'NoteController@store');
+        $router->put('/notes/{id}','NoteController@update');
+        $router->delete('/notes/{id}','NoteController@delete');
+    });
 });
