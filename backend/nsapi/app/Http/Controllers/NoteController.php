@@ -37,10 +37,18 @@ class NoteController extends Controller
 
         try {
             $note = Note::findOrFail($id);
+            
+            if($note->user_id != JWTAuth::user()->id){
+                return response()->json([
+                    'error' => 'You are not authorized to delete this note.'
+                ], 400);
+            }
+            
             $note->title = $request->title;
             $note->text = $request->text;
             $note->img = $request->img;
             $note->open = $request->open;            
+            $note->user_id = JWTAuth::user()->id;
 
             if($note->save()){
                 return response()->json(['status'=>'success','message'=>'Note create successfully']);
@@ -55,6 +63,14 @@ class NoteController extends Controller
         try {
             $note = Note::findOrFail($id);
 
+            if (!$note) {
+                return response()->json([],404);
+            }
+            if ($note->user_id != JWTAuth::user()->id) {
+                return response()->json([
+                    'error' => 'You are not authorized to delete this note.'
+                ], 400);
+            }
             if($note->delete()){
                 return response()->json(['status'=>'success','message'=>'Note delete successfully']);
             }
