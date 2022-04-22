@@ -11,8 +11,8 @@ function HomePage() {
             <Typography component="div" variant="h1">
                 Questo è l' HomePage del sito
             </Typography>
-            <Link to="/homepage/appunti">Appunti</Link>
-            <Link to="/homepage/ricerca">Ricerca</Link>
+            <Link to="/appunti">Appunti</Link>
+            <Link to="/ricerca">Ricerca</Link>
             <Dashboard />
             <Outlet />
         </Container>
