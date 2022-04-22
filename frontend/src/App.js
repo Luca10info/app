@@ -8,6 +8,7 @@ import SearchTwoToneIcon from '@mui/icons-material/SearchTwoTone';
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ErrorPage from "./pages/errorPage";
 import Appunti from "./pages/appunti";
+import Homepage from "./pages/homePage"
 
 
 const customtheme = createTheme({
@@ -34,6 +35,11 @@ const menuItems = [
     text: "Ricerca",
     logo: <SearchTwoToneIcon />,
     path: "/create"
+  },
+  {
+    text: "Homepage",
+    logo: "H",
+    path: "/homepage"
   }
 ]
 
@@ -48,6 +54,7 @@ function App() {
           <Layout menuItems={menuItems}>
             <Routes>
               <Route path="/" element={<Dashboard/>} />
+              <Route path="/homepage" element={<Homepage/>} />
               <Route path="/appunti" element={<Appunti/>}/>
               <Route path="*" element={<ErrorPage/>}/>
             </Routes>
